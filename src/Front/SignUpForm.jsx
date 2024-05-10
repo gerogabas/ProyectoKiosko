@@ -8,7 +8,7 @@ const errorInputClass = `${inputBaseClass} border-red-300 dark:border-red-700 te
 
 function SignUpForm() {
   return (
-    <form className="w-full max-w-lg bg-white dark:bg-zinc-800 shadow-md rounded-lg px-8 pt-6 pb-8 mb-4 shadow-red-500/50 dark:shadow-red-800/50">
+    <form className="w-full max-w-lg bg-white dark:bg-zinc-800 shadow-md rounded-lg px-10 pt-6 pb-6 mb-0 shadow-red-500/50 dark:shadow-red-800/50">
       <InputField type="text" placeholder="Usuario" id="username" inputClass={`${inputBaseClass} ${borderColorClass} ${textColorClass} ${focusRingClass}`} labelClass={labelBaseClass} />
       <InputField type="password" placeholder="******************" id="password" inputClass={`${inputBaseClass} ${borderColorClass} ${textColorClass} ${focusRingClass}`} labelClass={labelBaseClass} />
       <DualInputField inputBaseClass={inputBaseClass} labelBaseClass={labelBaseClass} focusRingClass={focusRingClass} borderColorClass={borderColorClass} textColorClass={textColorClass} />  

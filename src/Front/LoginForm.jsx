@@ -5,17 +5,45 @@ const containerClasses = "w-full max-w-md p-8 space-y-6 bg-zinc-800 rounded-xl s
 const inputClasses = "mt-1 block w-full px-3 py-2 bg-zinc-700 border border-zinc-600 rounded-md shadow-sm placeholder-zinc-400 focus:outline-none focus:ring-violet-500 focus:border-violet-500 text-white";
 const buttonClasses = "w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-violet-600 hover:bg-violet-700 focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2";
 
-const LoginForm = (props) => {
-  
+const LoginForm = () => {
+
   // States for the inputs
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState('');
 
   // Handle form submit
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    console.log("Form Submitted", { email, password });
-    // Here, implement the logic for form submission, like API calls.
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+
+    try {
+      // Enviar solicitud POST a la API para iniciar sesión
+      const response = await fetch('http://localhost:8000/login/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+          email,
+          password }),
+      });
+      
+
+      if (response.ok) {
+        // Si las credenciales son válidas, redirigir a otra página
+        //history.push('/dashboard');
+        alert(response.body.getReader());
+      } else {
+        // Si las credenciales son inválidas, mostrar mensaje de error
+        setError('Correo electrónico o contraseña incorrectos.');
+        alert('Error al iniciar sesión:', error);
+      }
+    } catch (error) {
+      alert.error('Error al iniciar sesión:', error);
+      setError('Se produjo un error al iniciar sesión. Inténtalo de nuevo más tarde.');
+    }
+    
   };
 
   return (
@@ -23,8 +51,8 @@ const LoginForm = (props) => {
       <div className={containerClasses}>
         <h2 className="text-3xl font-bold text-white text-center">Log In</h2>
         <form className="space-y-6" onSubmit={handleSubmit}>
-          <FormControl label="Email" type="email" value={email} onChange={setEmail}/>
-          <FormControl label="Password" type="password" value={password} onChange={setPassword}/>
+          <FormControl label="Email" type="email" value={email} onChange={setEmail} />
+          <FormControl label="Password" type="password" value={password} onChange={setPassword} />
           <div>
             <button type="submit" className={buttonClasses}>
               Log In
@@ -44,10 +72,10 @@ function FormControl({ label, type, value, onChange }) {
   return (
     <div>
       <label className="block text-sm font-medium text-zinc-300">{label}</label>
-      <input 
-        type={type} 
-        name={label.toLowerCase()} 
-        required 
+      <input
+        type={type}
+        name={label.toLowerCase()}
+        required
         className={inputClasses}
         value={value}
         onChange={e => onChange(e.target.value)}
