@@ -8,7 +8,7 @@ const Navbar = () => {
             </div>
             <div className="flex items-center gap-4">
                 <input type="text" placeholder="Search..." className="rounded-full p-2" />
-                <a href="#" className={textWhiteHoverZinc300}>Products</a>
+                <a href="/materias" className={textWhiteHoverZinc300}>Materias</a>
                 <a href="#" className={textWhiteHoverZinc300}>About</a>
                 <a href="#" className={textWhiteHoverZinc300}>Contact</a>
                 <a href="/logIn">

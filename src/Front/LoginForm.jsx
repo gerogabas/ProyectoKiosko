@@ -29,17 +29,20 @@ const LoginForm = () => {
           password }),
       });
       
+      // transformas el JSON devuelto en un OBJETO
+      const data = await response.json();
 
-      if (response.ok) {
-        // Si las credenciales son válidas, redirigir a otra página
-        //history.push('/dashboard');
-        alert(response.body.getReader());
-      } else {
+      if (!response.ok) {
         // Si las credenciales son inválidas, mostrar mensaje de error
         setError('Correo electrónico o contraseña incorrectos.');
-        alert('Error al iniciar sesión:', error);
-      }
-    } catch (error) {
+        alert('Error al iniciar sesión:', data.message);
+      } 
+      // Si las credenciales son válidas, redirigir a otra página
+      //history.push('/dashboard');
+      //alert(data.message);
+      window.location.href = '/Materias';
+    }
+    catch (error) {
       alert.error('Error al iniciar sesión:', error);
       setError('Se produjo un error al iniciar sesión. Inténtalo de nuevo más tarde.');
     }

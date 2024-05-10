@@ -38,3 +38,42 @@ async def login(l: LoginRequest):
     else:
         # Si la validación falla, devuelve un error HTTP 401 no autorizado
         raise HTTPException(status_code=401, detail="Credenciales incorrectas")
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel
+
+app = FastAPI()
+
+# Definir el modelo de datos para la materia
+class Materia(BaseModel):
+    nombre: str
+    carrera: str
+
+# Lista de ejemplo de materias
+materias = []
+
+# Rutas para operaciones CRUD
+@app.get("/materias")
+async def obtener_materias():
+    return materias
+
+@app.post("/materias")
+async def crear_materia(materia: Materia):
+    materias.append(materia)
+    return {"message": "Materia creada exitosamente"}
+
+@app.put("/materias/{nombre}")
+async def actualizar_materia(nombre: str, nueva_materia: Materia):
+    for materia in materias:
+        if materia.nombre == nombre:
+            materia.nombre = nueva_materia.nombre
+            materia.carrera = nueva_materia.carrera
+            return {"message": f"Materia {nombre} actualizada"}
+    raise HTTPException(status_code=404, detail="Materia no encontrada")
+
+@app.delete("/materias/{nombre}")
+async def borrar_materia(nombre: str):
+    for i, materia in enumerate(materias):
+        if materia.nombre == nombre:
+            del materias[i]
+            return {"message": f"Materia {nombre} eliminada"}
+    raise HTTPException(status_code=404, detail="Materia no encontrada")
