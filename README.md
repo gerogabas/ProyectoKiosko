@@ -1,6 +1,22 @@
 # Proyecto:
 Este proyecto se inicio por estar aburrido
 
+>[!NOTE]
+>Nota
+
+>[!TIP]
+>Tip
+
+>[!IMPORTANT]
+>Importante
+
+>[!WARNING]
+>Warn
+
+>[!CAUTION]
+>Caution
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
