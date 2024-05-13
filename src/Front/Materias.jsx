@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 const materias = [
   { id: 1, nombre: "Matemáticas", carrera: "Matemáticas Aplicadas" },
   { id: 2, nombre: "Física", carrera: "Física Teórica" },
@@ -6,33 +7,88 @@ const materias = [
 
 const btnRojo = "bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded mr-2";
 const btnAzul = "bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-2 rounded";
-function DibujarMaterias() {
-  return (
-    <div>
-      <h1 className="text-2xl font-bold mb-1"> Materias</h1>
-      <ul className="space-y-2" >
-        {materias.map(materia =>
-          <li key={"materia"+materia.id} name={materia.nombre}
-            className="flex justify-between items-center bg-purple-400 p-2 rounded">
-            Materia: {materia.nombre} - Carrera: {materia.carrera}
-            <div>
-            <button className={btnRojo} onClick={() => eliminarMateria(materia.id)}> Eliminar </button>
-            <button className={btnAzul}> Editar </button>
-            </div>
-          </li>)}
-      </ul>
-    </div>
-  );
-}
 
 export default function Materias() {
+
   return (
     <div className="container mx-auto bg-slate-700">
-
       <DibujarMaterias />
     </div>
   );
 }
+
+// Componente para el popup de edición
+const EditPopup = ({ materia, onClose }) => {
+  // Estado local para el nombre y la carrera de la materia
+  const [nombre, setNombre] = useState(materia.nombre);
+  const [carrera, setCarrera] = useState(materia.carrera);
+
+  // Función para manejar el clic en el botón de guardar cambios
+  const handleSaveChanges = () => {
+    // Aquí podrías enviar los cambios al servidor, por ejemplo, a través de una solicitud HTTP
+    // Después de guardar los cambios, cierra el popup
+    alert(materia.id);
+    onClose();
+  };
+
+  return (
+    <ul className="flex-auto space-x-1 space-y-1">
+      <h2>Editar Materia</h2>
+      <li>
+        Nombre: <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+      </li>
+      <li>
+        Carrera: <input type="text" value={carrera} onChange={(e) => setCarrera(e.target.value)} />
+      </li>
+      <button className="font-bold py-1 px-2 rounded" onClick={handleSaveChanges}>Guardar Cambios</button>
+      <button className="font-bold py-1 px-2 rounded" onClick={onClose}>Cancelar</button>
+    </ul>
+  );
+};
+
+// Componente principal para mostrar las materias
+const DibujarMaterias = () => {
+  const [materiaSeleccionada, setMateriaSeleccionada] = useState(null);
+  // Estado para controlar si se muestra el popup y qué materia se está editando
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleEditClick = (materia) => {
+    setMateriaSeleccionada(materia);
+  };
+
+  const handleEditarMateria = (materia) => {
+    // Al hacer clic en el botón de editar, muestra el popup y guarda la materia seleccionada
+    setMateriaSeleccionada(null);
+    setMateriaSeleccionada(materia);
+    //setShowPopup(true);
+  };
+  // Función para cerrar el popup
+  const handleClosePopup = () => {
+    //setShowPopup(false);
+    setMateriaSeleccionada(null);
+  };
+
+  return (
+    <div>
+      <h1 className="text-2xl font-bold mb-1">Materias</h1>
+
+      <ul className="space-y-2">
+        {materias.map(materia => (
+          <li key={materia.id} className="flex justify-between items-center bg-purple-400 p-2 rounded">
+            Materia: {materia.nombre} - Carrera: {materia.carrera}
+            <div>
+              <button className={btnRojo} onClick={() => eliminarMateria(materia.id)}> Eliminar </button>
+              <button className={btnAzul} onClick={() => handleEditarMateria(materia)}>Editar</button>
+            </div>
+          </li>
+        ))}
+        {materiaSeleccionada && <EditPopup materia={materiaSeleccionada} onClose={handleClosePopup} />}
+      </ul>
+
+    </div>
+  );
+};
+
 
 // import React, { useState, useEffect } from 'react';
 
