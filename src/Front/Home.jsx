@@ -9,11 +9,12 @@ function Marketplace() {
     <div className="bg-dark-violet text-white font-sans">
       <MainHeader />
       <ProductsSection />
+      <ProductsSection />
       <Footer />
     </div>
   );
 }
-
+export default Marketplace;
 // Navbar component
 
 // MainHeader component
@@ -70,5 +71,3 @@ function Footer() {
     </footer>
   );
 }
-
-export default Marketplace;
