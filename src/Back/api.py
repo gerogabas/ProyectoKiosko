@@ -38,10 +38,6 @@ async def login(l: LoginRequest):
     else:
         # Si la validación falla, devuelve un error HTTP 401 no autorizado
         raise HTTPException(status_code=401, detail="Credenciales incorrectas")
-from fastapi import FastAPI, HTTPException
-from pydantic import BaseModel
-
-app = FastAPI()
 
 # Definir el modelo de datos para la materia
 class Materia(BaseModel):
@@ -49,7 +45,12 @@ class Materia(BaseModel):
     carrera: str
 
 # Lista de ejemplo de materias
-materias = []
+materias = [
+    Materia(nombre="Matematicas", carrera="Ingenieria"),
+    Materia(nombre="Fisica", carrera="Ingenieria"),
+    Materia(nombre="Quimica", carrera="Ingenieria"),
+    Materia(nombre="Matematicas", carrera="TUP"),
+]
 
 # Rutas para operaciones CRUD
 @app.get("/materias")
