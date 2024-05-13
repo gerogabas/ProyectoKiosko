@@ -26,7 +26,7 @@ class LoginRequest(BaseModel):
     email: str
     password: str
 
-@app.get("/login/")
+@app.get("/")
 async def nada():
     return "hola"
 
@@ -41,15 +41,16 @@ async def login(l: LoginRequest):
 
 # Definir el modelo de datos para la materia
 class Materia(BaseModel):
+    id: int
     nombre: str
     carrera: str
 
 # Lista de ejemplo de materias
 materias = [
-    Materia(nombre="Matematicas", carrera="Ingenieria"),
-    Materia(nombre="Fisica", carrera="Ingenieria"),
-    Materia(nombre="Quimica", carrera="Ingenieria"),
-    Materia(nombre="Matematicas", carrera="TUP"),
+    Materia(id=1, nombre="Matematicas", carrera="Ingenieria"),
+    Materia(id=2, nombre="Fisica", carrera="Ingenieria"),
+    Materia(id=3, nombre="Quimica", carrera="Ingenieria"),
+    Materia(id=4, nombre="Matematicas", carrera="TUP"),
 ]
 
 # Rutas para operaciones CRUD

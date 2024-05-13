@@ -12,7 +12,8 @@ const LoginForm = () => {
   // States for the inputs
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const [response, setResponse] = useState(null);
+  const [error, setError] = useState(null);
 
   // Handle form submit
   const handleSubmit = async (e) => {
@@ -20,7 +21,7 @@ const LoginForm = () => {
     setError("");
     try {
       // Enviar solicitud POST a la API para iniciar sesión
-      const response = await fetch("http://localhost:8000/login/", {
+      const resp = await fetch("http://localhost:8000/login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -30,28 +31,27 @@ const LoginForm = () => {
           password,
         }),
       });
+      // con esto ves el json
+      //{JSON.stringify(response, null, 2)}
 
       // transformas el JSON devuelto en un OBJETO
-      const data = await response.json();
-
-      if (response.ok) {
+      if (resp.ok) {
         //history.push('/dashboard');
-        window.location.href = "/Materias";
+        //window.location.href = "/Materias";
+        const data = await resp.json();
+        setResponse(data);
+        setError(null);
       } else {
         // Si las credenciales son inválidas, mostrar mensaje de error
         setError("Correo electrónico o contraseña incorrectos.");
-        alert("Error al iniciar sesión:", data);
       }
     } catch (error) {
-      alert.error("Error al iniciar sesión:", error);
-      setError(
-        "Se produjo un error al iniciar sesión. Inténtalo de nuevo más tarde."
-      );
+      setError(error.message);
     }
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen p-4">
+    <div className="flex items-center justify-center min-h-screen max-w-96 p-4">
       <div className={containerClasses}>
         <h2 className="text-3xl font-bold text-white text-center">Log In</h2>
         <form className="space-y-6" onSubmit={handleSubmit}>
@@ -72,7 +72,10 @@ const LoginForm = () => {
               Log In
             </button>
           </div>
+
         </form>
+        {error && <div className="text-red-600">{error}</div>}
+        {response && <div className="text-green-500">{response.message}</div>}
         <p className="text-sm text-center text-zinc-400">
           No tienes cuenta?{" "}
           <a href="/signUp" className="text-violet-500 hover:text-violet-600">
