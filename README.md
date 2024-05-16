@@ -1,7 +1,7 @@
 # Proyecto:
 Este proyecto web esta siendo construido con:
 - Front: React (en JavaScript) + React Router Dom  + Tailwindcss
-- Back: FastAPI (Python) + PostgreSQL
+- Back: FastAPI (Python) + Uvicorn(server) + PostgreSQL
 
 >[!NOTE]
 >Nota
