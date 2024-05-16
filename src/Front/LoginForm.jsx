@@ -74,7 +74,7 @@ const LoginForm = () => {
           </div>
 
         </form>
-        {error && <div className="text-red-600">{error}</div>}
+        {error ? <div className="text-red-600">{error}</div>: null }
         {response && <div className="text-green-500">{response.message}</div>}
         <p className="text-sm text-center text-zinc-400">
           No tienes cuenta?{" "}
