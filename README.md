@@ -1,5 +1,7 @@
 # Proyecto:
-Este proyecto se inicio por estar aburrido
+Este proyecto web esta siendo construido con:
+- Front: React (en JavaScript) + React Router Dom  + Tailwindcss
+- Back: FastAPI (Python) + PostgreSQL
 
 >[!NOTE]
 >Nota
