@@ -8,10 +8,12 @@ const sharedTableHeaderClasses =
 
 // Componente para el encabezado de la tabla
 const TableHeader = () => {
+  const str = ["Legajo", "Nombre", "Apellido", `Email`, "Telefono", "Detalles"];
+  
   return (
-    <thead className="bg-zinc-50 dark:bg-zinc-800">
+    <thead className=" dark:bg-zinc-700 ">
       <tr>
-        {["Legajo", "Nombre", "Apellido", "Email", "Telefono", "Detalles"].map(
+        {str.map(
           (header) => (
             <th key={header} scope="col" className={sharedTableHeaderClasses}>
               {header}
@@ -33,9 +35,12 @@ const Estudiantes = () => {
 
   return (
     <div className="flex min-h-screen bg-zinc-100 dark:bg-zinc-900 p-4 rounded-xl">
-      {selectedAlumno ? ( <pre className="text-left">{JSON.stringify(selectedAlumno, null, 2)}</pre>) 
-      :(
-      <div className="container mx-auto">
+      {selectedAlumno ? (
+        <pre className="text-left">
+          {JSON.stringify(selectedAlumno, null, 2)}
+        </pre>
+      ) : (
+        <div className="container mx-auto">
           <h1 className="text-2xl font-bold mb-4 text-zinc-900 dark:text-zinc-100">
             Estudiantes
             <p className="text-sm">Total: {alumnos.length}</p>
@@ -46,14 +51,26 @@ const Estudiantes = () => {
               <tbody className="bg-white dark:bg-zinc-800 divide-y divide-zinc-200 dark:divide-zinc-700">
                 {alumnos.map((alumno) => (
                   <tr key={alumno.legajo}>
-                    <td className={`${sharedTableCellClasses} font-medium`}> {alumno.legajo} </td>
+                    <td className={`${sharedTableCellClasses} font-medium`}>
+                      {" "}
+                      {alumno.legajo}{" "}
+                    </td>
                     <td className={sharedTableCellClasses}>{alumno.nombre}</td>
-                    <td className={sharedTableCellClasses}>{alumno.apellido}</td>
+                    <td className={sharedTableCellClasses}>
+                      {alumno.apellido}
+                    </td>
                     <td className={sharedTableCellClasses}>{alumno.email}</td>
-                    <td className={sharedTableCellClasses}>{alumno.telefono}</td>
+                    <td className={sharedTableCellClasses}>
+                      {alumno.telefono}
+                    </td>
                     <td className={`${sharedTableCellClasses} text-right`}>
-                      <button className=" dark:text-indigo-400 dark:hover:text-indigo-600"
-                        onClick={() => handleClickAlumno(alumno)}> Info </button>
+                      <button
+                        className=" dark:text-indigo-400 dark:hover:text-indigo-600"
+                        onClick={() => handleClickAlumno(alumno)}
+                      >
+                        {" "}
+                        Info{" "}
+                      </button>
                     </td>
                   </tr>
                 ))}

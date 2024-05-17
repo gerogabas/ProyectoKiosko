@@ -79,16 +79,11 @@ button:focus-visible {
 }
 
 .logo {
-  height: 6em;
-  padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
 }
 .logo:hover {
   filter: drop-shadow(0 0 0.5em #fff1f1a4);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 0.8em #61dafbaa);
 }
 
 @keyframes logo-spin {
@@ -114,3 +109,80 @@ button:focus-visible {
   color: #888;
 }
 /* ---------------------------------*/
+/* --------- Mis css --------------*/
+.logoContact {
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logoContact:hover {
+  filter: drop-shadow(0 0 0.2em #ff000063);
+}
+
+.ulicon {
+  display: flex;
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+}
+
+.ulicon .liicon .aicon {
+  width: 55px;
+  height: 55px;
+  background-color: #fff;
+  text-align: center;
+  line-height: 50px;
+  font-size: 35px;
+  margin: 0 10px;
+  display: block;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+  border: 3px solid #fff;
+  z-index: 1;
+}
+
+.ulicon .liicon .aicon .icon {
+  position: relative;
+  color: #262626;
+  transition: .5s;
+  z-index: 3;
+}
+
+.ulicon .liicon .aicon:hover .icon {
+  color: #fff;
+  transform: rotateY(360deg);
+}
+
+.ulicon .liicon .aicon:before {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  /*background: #f00;*/
+  height: 100%;
+  transition: .5s;
+  z-index: 2;
+}
+
+.ulicon .liicon .aicon:hover:before {
+  top: 0;
+}
+
+/*
+.liicon:nth-child(1) .aicon:before{
+ background: #ff0000;
+}
+
+.liicon:nth-child(2) .aicon:before{
+  background: #55acee;
+}
+
+.liicon:nth-child(3) .aicon:before {
+  background: #d0ff00;
+}
+
+.liicon:nth-child(4) .aicon:before {
+  background: #dd4b39;
+} */
