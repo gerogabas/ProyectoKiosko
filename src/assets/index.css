@@ -85,7 +85,7 @@ button:focus-visible {
   transition: filter 300ms;
 }
 .logo:hover {
-  filter: drop-shadow(0 0 2em #ff1b1baa);
+  filter: drop-shadow(0 0 0.5em #fff1f1a4);
 }
 .logo.react:hover {
   filter: drop-shadow(0 0 0.8em #61dafbaa);
