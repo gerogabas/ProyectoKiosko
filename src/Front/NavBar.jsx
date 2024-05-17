@@ -7,7 +7,7 @@ const Navbar = () => {
         <div>
         <nav className="logo flex justify-between items-center p-4 bg-purple-800 rounded-full fixed top-0 left-0 right-0 z-10">
             <div className="ml-4">
-                <Link to="/" className={txtBlanco}>Home</Link>
+                <Link to="/" className={txtBlanco + ' font-bold text-xl hover:text-red-500'}>Home</Link>
             </div>
             <div className="flex items-center gap-4">
                 <input type="text" placeholder="Search..." className="rounded-full p-2" />
