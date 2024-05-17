@@ -12,7 +12,7 @@ const Navbar = () => {
             <div className="flex items-center gap-4">
                 <input type="text" placeholder="Search..." className="rounded-full p-2" />
                 <Link to="/materias" className={txtBlanco}>Materias</Link>
-                <Link to="#" className={txtBlanco}>About</Link>
+                <Link to="/estudiantes" className={txtBlanco}>Estudiantes</Link>
                 <Link to="#" className={txtBlanco}>Contact</Link>
                 <Link to="/login" children>
                     <button className="bg-white text-purple-800 py-2 px-4 rounded-full hover:bg-purple-700 hover:text-white">Login</button>

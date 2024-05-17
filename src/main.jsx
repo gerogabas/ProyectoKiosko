@@ -8,6 +8,12 @@ import SignUpForm from './Front/SignUpForm'
 import LoginForm from './Front/LoginForm'
 import Navbar from './Front/NavBar';
 import Materias from './Front/Materias';
+import Estudiantes from './Front/Estudiantes.jsx'
+
+const sampleStudents = [
+  { id: 1, name: 'John', surname: 'Doe', email: 'john.doe@example.com', phone: '123-456-7890' },
+  // Add more student data here if needed
+];
 
 const router = createBrowserRouter([
   {
@@ -30,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/materias",
         element: <Materias />,
+      },
+      {
+        path: "/estudiantes",
+        element: <Estudiantes />,
       },
     ]
   },

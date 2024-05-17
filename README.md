@@ -1,23 +1,34 @@
 # Proyecto:
+
 Este proyecto web esta siendo construido con:
-- Front: React (en JavaScript) + React Router Dom  + Tailwindcss
+
+- Front: React (en JavaScript) + React Router Dom + Tailwindcss
 - Back: FastAPI (Python) + Uvicorn(server) + PostgreSQL
 
->[!NOTE]
->Nota
+> [!NOTE]
+> Para iniciar la web:
+>
+> - "npm install"
+> - "npm run dev"
+> - _*Abrir la url mostrada en consola*_
+>
+> Para iniciar uvicorn (la API):
+>
+> - "cd src/Back"
+> - "py -m uvicorn api:app --reload"
+> - *Ya deberia estar escuchando al puerto mostrado*
 
->[!TIP]
->Tip
+> [!TIP]
+> Tip
 
->[!IMPORTANT]
->Importante
+> [!IMPORTANT]
+> Importante
 
->[!WARNING]
->Warn
+> [!WARNING]
+> Warn
 
->[!CAUTION]
->Caution
-
+> [!CAUTION]
+> Caution
 
 # React + Vite
 
