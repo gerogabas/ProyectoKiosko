@@ -1,5 +1,7 @@
 # Proyecto:
 
+socotroco
+
 Este proyecto web esta siendo construido con:
 
 - Front: React (en JavaScript) + React Router Dom + Tailwindcss
