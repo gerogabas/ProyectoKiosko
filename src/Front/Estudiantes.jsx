@@ -8,6 +8,16 @@ const sharedTableHeaderClasses =
 
 // Componente para el encabezado de la tabla
 const TableHeader = () => {
+
+  // lo que agregue:
+  const [estudiantes, setEstudiantes] = useState([]);
+
+
+
+
+
+
+
   return (
     <thead className="bg-zinc-50 dark:bg-zinc-800">
       <tr>
