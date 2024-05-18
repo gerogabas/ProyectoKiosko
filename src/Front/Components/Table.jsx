@@ -13,7 +13,6 @@ export default function DibujarTabla({ title, columnas, datos }) {
             {columnas.map((columna, index) => (
               <th key={index} className={tableHeader}> {columna.header} </th>
             ))}
-            <th key="detalle" className={tableHeader}> Detalle </th>
           </tr>
         </thead>
     );
@@ -28,11 +27,6 @@ export default function DibujarTabla({ title, columnas, datos }) {
                 // fila[columna.accessor] en accessor deberia estar el nombre del atributo al que acceder
                 (<td key={subIndex} className={tableCell}>{fila[columna.accessor]}</td>))
               }
-              <td className={`${tableCell} text-right`}>
-                <button className=" dark:text-indigo-400 dark:hover:text-indigo-600" 
-                  onClick={null}
-                > Ver </button>
-              </td>
             </tr>
           ))}
       </tbody>
@@ -43,9 +37,9 @@ export default function DibujarTabla({ title, columnas, datos }) {
     <div className="container mx-auto">
       <h1 className="text-2xl font-bold mb-4 text-zinc-900 dark:text-zinc-100">
         {title}
-        <p className="text-sm">Total:{datos.length}</p>
+        <p className="text-sm">Total: {datos.length}</p>
       </h1>
-      <div className="shadow-md overflow-hidden border-zinc-200 dark:border-zinc-700 sm:rounded-lg">
+      <div className="shadow-lg shadow-pink-900 overflow-hidden border-zinc-200 dark:border-zinc-700 sm:rounded-lg">
         <table className="min-w-full divide-y-2 divide-zinc-200 dark:divide-blue-700">
           <TableHeader />
           <TableBody />
