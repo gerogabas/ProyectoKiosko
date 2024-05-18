@@ -49,7 +49,7 @@ export default Estudiantes;
 //   }
 // ];
 
-
+// Asi estaba antes
 // // Componente principal
 // const Estudiantes = () => {
 //   const [selectedAlumno, setSelectedAlumno] = useState(null);
