@@ -20,8 +20,8 @@
 export default function Icons({ iconsYlinks }) {
   return (
     <ul className="ulicon">
-      {iconsYlinks.map((dato) => (
-        <li className={` liicon`}>
+      {iconsYlinks.map((dato, i) => (
+        <li key={i} className={` liicon`}>
           <a className={`${dato.background} aicon`} href={dato.link}>
             <i className={`${dato.icon} icon`}></i>
           </a>

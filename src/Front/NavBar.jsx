@@ -15,7 +15,7 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="flex items-center gap-4">
-          <input
+          <input id="buscar"
             type="text"
             placeholder="Search..."
             className="rounded-full p-2"
