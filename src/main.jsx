@@ -22,17 +22,23 @@ const App = () => {
   const [estudiantes, setEstudiantes] = useState([]);
 
   useEffect(() => {
-    fetchEstudiantes().then(setEstudiantes);
+    fetchEstudiantes()
+    .then(setEstudiantes)
+    .catch(error =>
+      console.error(error),
+      setEstudiantes(null)
+    );
   }, []);
 
-  useEffect(() => {
-    const intervalo = setInterval(() => {
-      // Simulación de actualización de datos
-      fetchEstudiantes().then(setEstudiantes);
-    }, 5000);
+  // Simulación de actualización de datos cada 5 segundos
+  // useEffect(() => {
+  //   const intervalo = setInterval(() => {
+  //     // Simulación de actualización de datos
+  //     fetchEstudiantes().then(setEstudiantes);
+  //   }, 5000);
 
-    return () => clearInterval(intervalo);
-  }, [estudiantes]);
+  //   return () => clearInterval(intervalo);
+  // }, [estudiantes]);
 
   const router = createBrowserRouter([
     {
@@ -48,7 +54,7 @@ const App = () => {
         { path: "/estudiantes/:legajo", element: <EstudiantesDetail estudiantes={estudiantes} /> },
         { path: "/contact", element: <ContactUsPage /> }
       ]
-    }
+    },
   ]);
 
   return <RouterProvider router={router} />;

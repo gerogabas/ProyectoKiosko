@@ -1,6 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import Tabla from './Components/Table.jsx';
+import React from "react";
+import { Link } from "react-router-dom";
+import Tabla from "./Components/Table.jsx";
+
+const btn ="bg-transparent hover:bg-pink-900 text-pink-300 font-semibold hover:text-white py-2 px-4 border border-pink-600 hover:border-transparent rounded"
 
 const columnas = [
   { header: "Legajo", accessor: "legajo" },
@@ -8,33 +10,35 @@ const columnas = [
   { header: "Nombre", accessor: "nombre" },
   { header: "Carrera", accessor: "carrera" },
   { header: "Email", accessor: "email" },
-  { header: "Ver", accessor: "ver" }, // <-------------------- esto es muy god
+  { header: "+Info", accessor: "ver" }, // <-------------------- esto es muy god
 ];
 
-function Estudiantes({ estudiantes }) {
+export default function Estudiantes({ estudiantes }) {
+  //estudiantes = estudiantesHardcoded;
+
   // es tremen2 este codigo pa
-  const datos = estudiantes.map(estudiante => ({
+  if (!estudiantes) return <div>Error al acceder a los estudiantes...</div>;
+  else if (estudiantes.length === 0)
+    return <div>No hay estudiantes en la bdd...</div>;
+  const datos = estudiantes.map((estudiante) => ({
     ...estudiante,
-    ver: 
-    ( <Link to={`/estudiantes/${estudiante.legajo}`} 
-      className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700"
+    ver: (
+      <Link
+        to={`/estudiantes/${estudiante.legajo}`}
+        className={btn}
       > Ver </Link>
     )
   }));
 
   return (
-    <div className="min-h-screen bg-zinc-100 dark:bg-zinc-900 p-4 rounded-xl">
-      {!estudiantes
-        ? ( <pre className="text-left"> {JSON.stringify(estudiantes, null, 2)} </pre>)
-        : ( <Tabla title={"Estudiantes"} columnas={columnas} datos={datos} />)}
+    <div className="min-h-screen bg-zinc-900 p-4 rounded-xl">
+      <Tabla title={"Estudiantes"} columnas={columnas} datos={datos} />
     </div>
   );
 }
 
-export default Estudiantes;
-
 //data para testeo
-// const alumnos = [
+// const estudiantesHardcoded = [
 //   {
 //     nombre: "Juan",
 //     apellido: "Pérez",
@@ -51,38 +55,3 @@ export default Estudiantes;
 //     ],
 //   }
 // ];
-
-// Asi estaba antes
-// // Componente principal
-// const Estudiantes = () => {
-//   const [selectedAlumno, setSelectedAlumno] = useState(null);
-
-//   const handleClickAlumno = (alu) => {
-//     setSelectedAlumno(alu);
-//   };
-
-//   return (
-//     <div className="flex min-h-screen bg-zinc-100 dark:bg-zinc-900 p-4 rounded-xl">
-//       {selectedAlumno ? (
-//         <pre className="text-left">
-//           {JSON.stringify(selectedAlumno, null, 2)}
-//         </pre>
-//       ) : (
-//         <Table
-//           title="Alumnos"
-//           datos={alumnos}
-//           link={"/estudiantes"}
-//           columnas={[
-//             { header: "Legajo", accessor: "legajo" },
-//             { header: "Apellido", accessor: "apellido" },
-//             { header: "Nombre", accessor: "nombre" },
-//             { header: "Carrera", accessor: "carrera" },
-//             { header: "Email", accessor: "email" },
-//             { header: "Teléfono", accessor: "telefono" },
-//           ]}
-//         />
-//       )}
-//     </div>
-//   );
-// };
-

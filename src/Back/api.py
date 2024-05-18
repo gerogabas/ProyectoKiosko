@@ -101,8 +101,8 @@ async def borrar_materia(nombre: str):
 # Base de datos simulada
 estudiantes_db = [
     {
-        "nombre": "Juan",
-        "apellido": "Pérez",
+        "nombre": "Juan Pedro Jacinto Roberto jr.",
+        "apellido": "Pérez Rosales",
         "legajo": "12345",
         "edad": 21,
         "carrera": "Ingeniería",
