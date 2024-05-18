@@ -1,12 +1,47 @@
 // Estilos
-const sharedTableCellClasses =
+const tableCell =
   "px-6 py-4 whitespace-nowrap text-sm text-zinc-900 dark:text-zinc-100";
-const sharedTableHeaderClasses =
+const tableHeader =
   "px-6 py-3 text-left text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-wider";
 
-export default function DibujarTabla({ title, header, datos }) {
+export default function DibujarTabla({ title, columnas, datos }) {
 
-  header = ["Legajo", "Nombre", "Apellido", `Email`, "Telefono", "Detalles"];
+  console.log(JSON.stringify(columnas))
+  console.log("")
+  console.log(JSON.stringify(datos))
+  console.log("")
+  const TableHeader = () => {
+    return (
+
+      <thead className="dark:bg-zinc-700 text-white">
+          <tr>
+            {columnas.map((columna, index) => (
+              <th key={index} className={tableHeader}> {columna.header} </th>
+            ))}
+          </tr>
+        </thead>
+    );
+  };
+
+  const TableBody = () => {
+    return (
+      <tbody className="text-gray-700">
+        {datos.map((fila, index) =>
+          (<tr key={index}>
+              {columnas.map((columna, subIndex) =>
+                // fila[columna.accessor] es la celda, accessor es el nombre de la columna a la que accede
+                (<td key={subIndex} className={tableCell}>{fila[columna.accessor]}</td>))
+              }
+              <td className={`${tableCell} text-right`}>
+                <button className=" dark:text-indigo-400 dark:hover:text-indigo-600" 
+                  onClick={null}
+                > Info </button>
+              </td>
+            </tr>
+          ))}
+      </tbody>
+    );
+  };
 
   return (
     <div className="container mx-auto">
@@ -23,46 +58,3 @@ export default function DibujarTabla({ title, header, datos }) {
     </div>
   );
 }
-
-const TableHeader = () => {
-  return (
-    <thead className=" dark:bg-zinc-700 ">
-      <tr>
-        {str.map((header) => (
-          <th key={header} scope="col" className={sharedTableHeaderClasses}>
-            {" "}
-            {header}{" "}
-          </th>
-        ))}
-      </tr>
-    </thead>
-  );
-};
-
-const TableBody = () => {
-  return (
-    <tbody className="bg-white dark:bg-zinc-800 divide-y divide-zinc-200 dark:divide-zinc-700">
-      {alumnos.map((alumno) => (
-        <tr key={alumno.legajo}>
-          <td className={`${sharedTableCellClasses} font-medium`}>
-            {" "}
-            {alumno.legajo}{" "}
-          </td>
-          <td className={sharedTableCellClasses}>{alumno.nombre}</td>
-          <td className={sharedTableCellClasses}>{alumno.apellido}</td>
-          <td className={sharedTableCellClasses}>{alumno.email}</td>
-          <td className={sharedTableCellClasses}>{alumno.telefono}</td>
-          <td className={`${sharedTableCellClasses} text-right`}>
-            <button
-              className=" dark:text-indigo-400 dark:hover:text-indigo-600"
-              onClick={() => handleClickAlumno(alumno)}
-            >
-              {" "}
-              Info{""}
-            </button>
-          </td>
-        </tr>
-      ))}
-    </tbody>
-  );
-};
