@@ -26,7 +26,7 @@ const Navbar = () => {
           <Link to="/estudiantes" className={txtBlanco}>
             Estudiantes
           </Link>
-          <Link to="#" className={txtBlanco}>
+          <Link to="/contact" className={txtBlanco}>
             Contacto
           </Link>
           <Link to="/login" children>
