@@ -6,18 +6,14 @@ const tableHeader =
 
 export default function DibujarTabla({ title, columnas, datos }) {
 
-  console.log(JSON.stringify(columnas))
-  console.log("")
-  console.log(JSON.stringify(datos))
-  console.log("")
   const TableHeader = () => {
     return (
-
       <thead className="dark:bg-zinc-700 text-white">
           <tr>
             {columnas.map((columna, index) => (
               <th key={index} className={tableHeader}> {columna.header} </th>
             ))}
+            <th key="detalle" className={tableHeader}> Detalle </th>
           </tr>
         </thead>
     );
@@ -25,17 +21,17 @@ export default function DibujarTabla({ title, columnas, datos }) {
 
   const TableBody = () => {
     return (
-      <tbody className="text-gray-700">
+      <tbody className="text-gray-700 bg-neutral-800 divide-y divide-violet-900">
         {datos.map((fila, index) =>
           (<tr key={index}>
               {columnas.map((columna, subIndex) =>
-                // fila[columna.accessor] es la celda, accessor es el nombre de la columna a la que accede
+                // fila[columna.accessor] en accessor deberia estar el nombre del atributo al que acceder
                 (<td key={subIndex} className={tableCell}>{fila[columna.accessor]}</td>))
               }
               <td className={`${tableCell} text-right`}>
                 <button className=" dark:text-indigo-400 dark:hover:text-indigo-600" 
                   onClick={null}
-                > Info </button>
+                > Ver </button>
               </td>
             </tr>
           ))}
@@ -49,8 +45,8 @@ export default function DibujarTabla({ title, columnas, datos }) {
         {title}
         <p className="text-sm">Total:{datos.length}</p>
       </h1>
-      <div className="shadow-md overflow-hidden border-b border-zinc-200 dark:border-zinc-700 sm:rounded-lg">
-        <table className="min-w-full divide-y divide-zinc-200 dark:divide-zinc-700">
+      <div className="shadow-md overflow-hidden border-zinc-200 dark:border-zinc-700 sm:rounded-lg">
+        <table className="min-w-full divide-y-2 divide-zinc-200 dark:divide-blue-700">
           <TableHeader />
           <TableBody />
         </table>

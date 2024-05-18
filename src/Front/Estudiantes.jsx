@@ -43,11 +43,9 @@ const Estudiantes = () => {
             { header: "Legajo", accessor: "legajo" },
             { header: "Apellido", accessor: "apellido" },
             { header: "Nombre", accessor: "nombre" },
-            { header: "Edad", accessor: "edad" },
             { header: "Carrera", accessor: "carrera" },
             { header: "Email", accessor: "email" },
             { header: "Teléfono", accessor: "telefono" },
-            { header: "Dirección", accessor: "direccion" },
           ]}
         />
       )}
