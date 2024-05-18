@@ -12,6 +12,7 @@ const columnas = [
 ];
 
 function Estudiantes({ estudiantes }) {
+  // es tremen2 este codigo pa
   const datos = estudiantes.map(estudiante => ({
     ...estudiante,
     ver: 
@@ -22,8 +23,10 @@ function Estudiantes({ estudiantes }) {
   }));
 
   return (
-    <div className="flex min-h-screen bg-zinc-100 dark:bg-zinc-900 p-4 rounded-xl">
-      <Tabla title={"Estudiantes"} columnas={columnas} datos={datos} />
+    <div className="min-h-screen bg-zinc-100 dark:bg-zinc-900 p-4 rounded-xl">
+      {!estudiantes
+        ? ( <pre className="text-left"> {JSON.stringify(estudiantes, null, 2)} </pre>)
+        : ( <Tabla title={"Estudiantes"} columnas={columnas} datos={datos} />)}
     </div>
   );
 }
@@ -82,6 +85,4 @@ export default Estudiantes;
 //     </div>
 //   );
 // };
-
-// export default Estudiantes;
 

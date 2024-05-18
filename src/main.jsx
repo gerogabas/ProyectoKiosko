@@ -25,6 +25,15 @@ const App = () => {
     fetchEstudiantes().then(setEstudiantes);
   }, []);
 
+  useEffect(() => {
+    const intervalo = setInterval(() => {
+      // Simulación de actualización de datos
+      fetchEstudiantes().then(setEstudiantes);
+    }, 5000);
+
+    return () => clearInterval(intervalo);
+  }, [estudiantes]);
+
   const router = createBrowserRouter([
     {
       path: "/",
