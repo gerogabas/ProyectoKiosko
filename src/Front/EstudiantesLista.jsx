@@ -13,7 +13,7 @@ const columnas = [
   { header: "+Info", accessor: "ver" }, // <-------------------- esto es muy god
 ];
 
-export default function Estudiantes({ estudiantes }) {
+export default function EstudiantesLista({ estudiantes }) {
   //estudiantes = estudiantesHardcoded;
 
   // es tremen2 este codigo pa
