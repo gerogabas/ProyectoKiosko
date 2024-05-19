@@ -2,15 +2,13 @@ import React, { useState, useEffect } from 'react'
 import ReactDOM from 'react-dom/client'
 import './assets/index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import ErrorPage from './Front/ErrorPage2.jsx'
-import ErrorPage from './Front/ErrorPage2.jsx'
+import ErrorPage from './Front/ErrorPage.jsx'
+import ErrorPage2 from './Front/ErrorPage2.jsx'
 import Home from './Front/Home'
 import SignUpForm from './Front/SignUpForm'
 import LoginForm from './Front/LoginForm'
 import Navbar from './Front/NavBar';
 import Materias from './Front/Materias';
-import EstudiantesAdmin from './Front/EstudiantesAdmin.jsx';
-import EstudiantesLista from './Front/EstudiantesLista.jsx'
 import EstudiantesAdmin from './Front/EstudiantesAdmin.jsx';
 import EstudiantesLista from './Front/EstudiantesLista.jsx'
 import EstudiantesDetail from './Front/EstudiantesDetail.jsx'

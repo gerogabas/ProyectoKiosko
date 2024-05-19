@@ -69,29 +69,14 @@ function ProductsSection() {
           description="Description of product 1 goes here. It's an amazing product."
         />
         <ProductCard
-          imageUrl="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ade5cd9bl7wz7bnsqbkn.gif"
-          title="Product 2"
-          description="Description of product 2 goes here. Don't miss out on this."
-        />
-        <ProductCard
           imageUrl="https://dev-to-uploads.s3.amazonaws.com/uploads/articles/jbbv8nbpun26xj7l30hk.png"
-          title="Product 3"
-          description="Description of product 3 goes here. It's a top choice!"
-        />
-        <ProductCard
-          imageUrl="https://cdn-cekmh.nitrocdn.com/SlrtebQxNZbUBkfXeRIcTgUmxZsOSldb/assets/images/optimized/rev-a090185/codoid.com/wp-content/uploads/2023/02/Software-Development-Meme.jpg"
-          title="Product 3"
-          description="Description of product 3 goes here. It's a top choice!"
-        />
-        <ProductCard
-          imageUrl="https://placehold.co/300x300"
-          title="Product 3"
+          title="Product 2"
           description="Description of product 3 goes here. It's a top choice!"
         />
         <ProductCard
           imageUrl="https://pbs.twimg.com/media/EOYTyjuU8AASiIu.png"
           title="Product 3"
-          description="Description of product 3 goes here. It's a top choice!"
+          description="Description of product 2 goes here. Don't miss out on this."
         />
       </div>
     </section>
