@@ -109,7 +109,7 @@ export default function ErrorPage() {
   // ahora no me anda esto
   // const error = useRouteError();
   return (
-    <div>
+    <div class="bodyastro">
       <div class="moon"></div>
       <div class="moon__crater moon__crater1"></div>
       <div class="moon__crater moon__crater2"></div>
@@ -125,7 +125,7 @@ export default function ErrorPage() {
         <div class="error__title">404</div>
         <div class="error__subtitle">Hmmm...</div>
         <div class="error__description">
-          Parece que {"\"alguien\""} se olvido de {"\"algo\""}...
+          Parece que "alguien" se olvido de "algo"...
         </div>
         {/* <p><i>{JSON.stringify(error)}</i></p> */}
         <br />
@@ -164,3 +164,4 @@ export default function ErrorPage() {
     </div>
   );
 }
+

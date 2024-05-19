@@ -1,13 +1,14 @@
-html,
-body {
-  height: 100%;
+.bodyastro {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  margin: 0px;
-  background: linear-gradient(90deg, rgba(47,54,64,1) 23%, rgba(24,27,32,1) 100%);
+  height: 100%;
+  background: linear-gradient(90deg, rgb(71, 71, 71) 23%, rgb(40, 45, 54) 100%);
 }
 
 .moon {
-  background: linear-gradient(90deg, rgba(208,208,208,1) 48%, rgba(145,145,145,1) 100%);
+  background: linear-gradient(90deg, rgba(208,208,208,1) 48%, rgb(121, 120, 120) 100%);
   position: absolute;
   top: -100px;
   left: -300px;
@@ -50,7 +51,7 @@ body {
 }
 
 .star {
-  background: grey;
+  background: rgb(148, 138, 46);
   position: absolute;
   width: 5px;
   height: 5px;
@@ -88,20 +89,22 @@ body {
 }
 
 .star4 {
-  top: 90%;
-  left: 40%;
+  top: 25%;
+  left: 80%;
+  background-color: #3667bd;
 }
 
 .star5 {
-  top: 20%;
-  left: 30%;
-  animation-delay: 0.5s;
+  top: 85%;
+  left: 65%;
+  background-color: #e6e6e6;
+  animation-delay: 5s;
 }
 
 .error {
   position: absolute;
   left: 100px;
-  top: 400px;
+  top: 300px;
   transform: translateY(-60%);
   font-family: 'Righteous', cursive;
   color: #363e49;

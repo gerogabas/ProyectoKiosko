@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom/client'
 import './assets/index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import ErrorPage from './Front/ErrorPage.jsx'
+import ErrorPage2 from './Front/ErrorPage2.jsx'
 import Home from './Front/Home'
 import SignUpForm from './Front/SignUpForm'
 import LoginForm from './Front/LoginForm'
 import Navbar from './Front/NavBar';
 import Materias from './Front/Materias';
-import Estudiantes from './Front/Estudiantes.jsx'
+import EstudiantesAdmin from './Front/EstudiantesAdmin.jsx';
+import EstudiantesLista from './Front/EstudiantesLista.jsx'
 import EstudiantesDetail from './Front/EstudiantesDetail.jsx'
 import ContactUsPage from './Front/Components/Contact.jsx'
 
@@ -50,7 +52,8 @@ const App = () => {
         { path: "/login", element: <LoginForm /> },
         { path: "/signUp", element: <SignUpForm /> },
         { path: "/materias", element: <Materias /> },
-        { path: "/estudiantes", element: <Estudiantes estudiantes={estudiantes} /> },
+        { path: "/estudiantes/admin", element: <EstudiantesAdmin /> },
+        { path: "/estudiantes", element: <EstudiantesLista estudiantes={estudiantes} /> },
         { path: "/estudiantes/:legajo", element: <EstudiantesDetail estudiantes={estudiantes} /> },
         { path: "/contact", element: <ContactUsPage /> }
       ]
