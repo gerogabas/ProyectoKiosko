@@ -51,8 +51,8 @@ const App = () => {
         { path: "/login", element: <LoginForm /> },
         { path: "/signUp", element: <SignUpForm /> },
         { path: "/materias", element: <Materias /> },
-        { path: "/estudiantes", element: <EstudiantesAdmin /> },
-        { path: "/estudiantes/todos", element: <EstudiantesLista estudiantes={estudiantes} /> },
+        { path: "/estudiantes/admin", element: <EstudiantesAdmin /> },
+        { path: "/estudiantes", element: <EstudiantesLista estudiantes={estudiantes} /> },
         { path: "/estudiantes/:legajo", element: <EstudiantesDetail estudiantes={estudiantes} /> },
         { path: "/contact", element: <ContactUsPage /> }
       ]
