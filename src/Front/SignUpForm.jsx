@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 const inputBaseClass = "shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline";
 const labelBaseClass = "block text-zinc-700 dark:text-zinc-200 text-sm font-bold mb-2";
@@ -78,9 +79,9 @@ function SubmitSection() {
       <button className="bg-red-500 hover:bg-red-700 dark:hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
         Registrarse
       </button>
-      <a className="inline-block align-baseline font-bold text-sm text-red-500 hover:text-red-800 dark:text-red-300 dark:hover:text-red-500" href="../logIn">
+      <Link to="../logIn" className="inline-block align-baseline font-bold text-sm text-red-500 hover:text-red-800 dark:text-red-300 dark:hover:text-red-500">
         ¿Ya posee una cuenta?
-      </a>
+      </Link>
     </div>
   );
 }
