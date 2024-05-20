@@ -46,7 +46,7 @@ const App = () => {
     {
       path: "/",
       element: <Navbar />,
-      errorElement: <ErrorPage />,
+      errorElement: <ErrorPage2 />,
       children: [
         { path: "/", element: <Home /> },
         { path: "/login", element: <LoginForm /> },
