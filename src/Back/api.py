@@ -38,6 +38,7 @@ async def login(l: models.LoginRequest):
         raise HTTPException(status_code=401, detail="Credenciales incorrectas")
 
 # ---------------------------------MATERIAS---------------------------------------------
+# ---------------------------------MATERIAS---------------------------------------------
 
 # Lista de ejemplo de materias
 materias = [
