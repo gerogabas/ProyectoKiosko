@@ -16,6 +16,8 @@ Este proyecto web esta siendo construido con:
 >
 > Para iniciar uvicorn (la API):
 >
+> - "python -m venv env"
+> - "source env\Scripts\activate" (en Windows)
 > - "pip install -r requirements.txt"
 > - "py -m uvicorn src.Back.api:app --reload"
 > - *Ya deberia estar escuchando al puerto mostrado*

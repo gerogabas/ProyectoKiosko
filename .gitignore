@@ -16,6 +16,7 @@ estudiantesdetailTest.jsx
 src/Back/__pycache__*
 
 node_modules
+env
 dist
 dist-ssr
 *.local
