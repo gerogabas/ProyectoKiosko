@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 // Constants for shared Tailwind CSS classes
 const containerClasses =
@@ -78,9 +79,9 @@ const LoginForm = () => {
         {response && <div className="text-green-500">{response.message}</div>}
         <p className="text-sm text-center text-zinc-400">
           No tienes cuenta?{" "}
-          <a href="/signUp" className="text-violet-500 hover:text-violet-600">
+          <Link to="/signUp" className="text-violet-500 hover:text-violet-600">
             Crear cuenta
-          </a>
+          </Link>
         </p>
       </div>
     </div>

@@ -9,12 +9,14 @@ lerna-debug.log*
 
 #archivos mios
 database.py
-main.py
-models.py
-estudiantes2.jsx
-estudiantesdetail2.jsx
+mainTest.py
+modelsTest.py
+estudiantesTest.jsx
+estudiantesdetailTest.jsx
+src/Back/__pycache__*
 
 node_modules
+env
 dist
 dist-ssr
 *.local
