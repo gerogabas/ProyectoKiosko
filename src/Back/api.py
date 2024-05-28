@@ -1,8 +1,8 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from . import models
+from . import login
 
-from typing import List
-from pydantic import BaseModel
 
 app = FastAPI()
 
@@ -24,33 +24,12 @@ app.add_middleware(
     allow_headers=["*","Content-Type"]
 )
 
-class LoginRequest(BaseModel):
-    email: str
-    password: str
-
-
-class Materia(BaseModel):
-    id: int
-    nombre: str
-    carrera: str
-
-class Estudiante(BaseModel):
-    nombre: str
-    apellido: str
-    legajo: str
-    edad: int
-    carrera: str
-    email: str
-    telefono: str
-    direccion: str
-    materias: List[Materia]
-
 @app.get("/")
 async def nada():
     return "hola"
 
 @app.post("/login/")
-async def login(l: LoginRequest):
+async def login(l: models.LoginRequest):
     # Validar el correo electrónico y la contraseña (hardcodeado)
     if l.email == "g@g" and l.password == "123":
         return {"message": "Login exitoso"}
@@ -62,10 +41,10 @@ async def login(l: LoginRequest):
 
 # Lista de ejemplo de materias
 materias = [
-    Materia(id=1, nombre="Matematicas", carrera="Ingenieria"),
-    Materia(id=2, nombre="Fisica", carrera="Ingenieria"),
-    Materia(id=3, nombre="Quimica", carrera="Ingenieria"),
-    Materia(id=4, nombre="Matematicas", carrera="TUP"),
+    models.Materia(id=1, nombre="Matematicas", carrera="Ingenieria"),
+    models.Materia(id=2, nombre="Fisica", carrera="Ingenieria"),
+    models.Materia(id=3, nombre="Quimica", carrera="Ingenieria"),
+    models.Materia(id=4, nombre="Matematicas", carrera="TUP"),
 ]
 
 # Rutas para operaciones CRUD
@@ -74,12 +53,12 @@ async def obtener_materias():
     return materias
 
 @app.post("/materias")
-async def crear_materia(materia: Materia):
+async def crear_materia(materia: models.Materia):
     materias.append(materia)
     return {"message": "Materia creada exitosamente"}
 
 @app.put("/materias/{nombre}")
-async def actualizar_materia(nombre: str, nueva_materia: Materia):
+async def actualizar_materia(nombre: str, nueva_materia: models.Materia):
     for materia in materias:
         if materia.nombre == nombre:
             materia.nombre = nueva_materia.nombre
@@ -256,27 +235,27 @@ estudiantes_db = [
 async def get_estudiantes():
     return estudiantes_db
 
-@app.get("/estudiantes/{legajo}", response_model=Estudiante)
+@app.get("/estudiantes/{legajo}", response_model=models.Estudiante)
 async def get_estudiante(legajo: str):
     estudiante = next((est for est in estudiantes_db if est["legajo"] == legajo), None)
     if estudiante is None:
         raise HTTPException(status_code=404, detail="Estudiante no encontrado")
     return estudiante
 
-@app.post("/estudiantes/", response_model=Estudiante)
-async def create_estudiante(estudiante: Estudiante):
+@app.post("/estudiantes/", response_model=models.Estudiante)
+async def create_estudiante(estudiante: models.Estudiante):
     estudiantes_db.append(estudiante.model_dump())
     return estudiante
 
-@app.put("/estudiantes/{legajo}", response_model=Estudiante)
-async def update_estudiante(legajo: str, estudiante: Estudiante):
+@app.put("/estudiantes/{legajo}", response_model=models.Estudiante)
+async def update_estudiante(legajo: str, estudiante: models.Estudiante):
     index = next((i for i, est in enumerate(estudiantes_db) if est["legajo"] == legajo), None)
     if index is None:
         raise HTTPException(status_code=404, detail="Estudiante no encontrado")
     estudiantes_db[index] = estudiante.model_dump()
     return estudiante
 
-@app.delete("/estudiantes/{legajo}", response_model=Estudiante)
+@app.delete("/estudiantes/{legajo}", response_model=models.Estudiante)
 async def delete_estudiante(legajo: str):
     index = next((i for i, est in enumerate(estudiantes_db) if est["legajo"] == legajo), None)
     if index is None:

@@ -13,6 +13,7 @@ mainTest.py
 modelsTest.py
 estudiantesTest.jsx
 estudiantesdetailTest.jsx
+src/Back/__pycache__*
 
 node_modules
 dist
